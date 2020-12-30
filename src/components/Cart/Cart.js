@@ -19,7 +19,7 @@ const Cart = (props) => {
            <h4>Order summary : {props.cart.length}</h4>
            <h4>Price : ${Math.round(price)}</h4>
            <h4>Shipping Cost : ${shipping}</h4>
-           <h4>Total cost : ${price+shipping}</h4>
+           <h4>Total cost : ${Math.round(price+shipping)}</h4>
         </div>
     );
 };
