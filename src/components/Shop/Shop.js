@@ -3,6 +3,7 @@ import './Shop.css';
 import fakeData from '../../fakeData';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
+import {addToDatabaseCart} from '../../utilities/databaseManager';
 const Shop = () => {
 
     const first15 = fakeData.slice(0,15);
@@ -12,6 +13,8 @@ const Shop = () => {
 
         const newCart = [...cart , pd];
         setCart(newCart);
+        const sameProduct = newCart.filter(cartEle => cartEle.key === pd.key);
+        addToDatabaseCart(pd.key , sameProduct.length) ;
 
     }
 
@@ -19,7 +22,7 @@ const Shop = () => {
         <div className = "shop-container">
                   <div className="product-container">
 
-                        {products.map(product=> <Product btn={true} product = {product} handleAddProduct={handleAddProduct}></Product>)}
+                        {products.map(product=>  <Product btn={true} product = {product} handleAddProduct={handleAddProduct} key={product.key}></Product>)}
 
                   </div>
                   <div className="cart-container" >
