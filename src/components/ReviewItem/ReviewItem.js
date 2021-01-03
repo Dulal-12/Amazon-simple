@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewItem = (props) => {
-    const {name , img , quantity} = props.product;
+    const {name , img , quantity, key} = props.product;
     return (
         <div className="product">
            <div >
@@ -10,7 +10,7 @@ const ReviewItem = (props) => {
            <div className="product-details">
                <h5>{name}</h5>
                <p><small>Quantity : {quantity}</small></p>
-               <button className = "main-btn">Remove</button>
+               <button onClick={()=> props.handleRemoveProduct(key)} className = "main-btn">Remove</button>
            </div>
         </div>
     );
